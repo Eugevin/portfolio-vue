@@ -1,0 +1,89 @@
+.white {
+  &#app {
+    background: #ffffff;
+
+    .header {
+      background: rgba(255, 255, 255, 0.5);
+
+      .header-burger {
+        span {
+          background: #000000;
+        }
+      }
+
+      .header-white-mode {
+        span {
+          border: 2px solid #000000;
+        }
+      }
+
+      .header-menu {
+        background: #ffffff;
+
+        .header-menu__navigation {
+          ul {
+            li {
+              a {
+                color: #141414;
+
+                &::before {
+                  background: #141414;
+                }
+
+                &:hover {
+                  color: #ffffff;
+                }
+              }
+            }
+          }
+        }
+
+        h5 {
+          color: #141414;
+        }
+      }
+    }
+
+    .socials {
+      a {
+        &:hover {
+          color: #141414;
+        }
+      }
+    }
+
+    .inner + .wrapper {
+      .wrapper-after {
+        color: #141414;
+      }
+    }
+
+    input {
+      &:focus {
+        border-bottom: 2px solid #000000;
+        color: #000000;
+
+        &::placeholder {
+          color: #000000;
+        }
+      }
+
+      &:valid {
+        border-bottom: 2px solid #000000;
+        color: #000000;
+      }
+    }
+
+    button {
+      color: #000000;
+
+      &::before {
+        background: #000000;
+      }
+
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+}
