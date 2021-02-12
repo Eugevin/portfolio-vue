@@ -30,9 +30,9 @@ import Menu from "@/components/Menu.vue";
   },
 })
 export default class Header extends Vue {
-  @Prop(Function) readonly menuHandler: any;
-  @Prop(Boolean) readonly menuState: boolean;
-  @Prop(Function) readonly whiteMode: boolean;
+  @Prop(Function) readonly menuHandler!: () => void;
+  @Prop(Boolean) readonly menuState!: boolean;
+  @Prop(Function) readonly whiteMode!: () => void;
 }
 </script>
 

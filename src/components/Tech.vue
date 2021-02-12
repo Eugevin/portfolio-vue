@@ -44,7 +44,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class Tech extends Vue {
-  @Prop() tech: any;
+  @Prop(Object) readonly tech!: object;
 }
 </script>
 

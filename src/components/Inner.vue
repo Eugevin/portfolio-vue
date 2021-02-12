@@ -13,20 +13,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 
-@Component({
-  name: "Inner",
-  props: {
-    background: {
-      required: false,
-    },
-    icon: String,
-    sup: String,
-    title: String,
-  },
-})
-export default class Inner extends Vue {}
+@Component
+export default class Inner extends Vue {
+  @Prop(String) readonly background!: string;
+  @Prop(String) readonly icon!: string;
+  @Prop(String) readonly sup!: string;
+  @Prop(String) readonly title!: string;
+}
 </script>
 
 <style lang="scss" scoped>

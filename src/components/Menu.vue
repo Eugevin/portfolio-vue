@@ -42,7 +42,7 @@ import Socials from "@/components/Socials.vue";
   },
 })
 export default class Menu extends Vue {
-  @Prop(Function) readonly menuHandler: any;
+  @Prop(Function) readonly menuHandler!: () => void;
 
   mounted() {
     const allPages = document.querySelectorAll(

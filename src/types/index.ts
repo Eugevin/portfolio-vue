@@ -1,5 +1,7 @@
-export type FormData = {
-  name: String;
-  email: String;
-  message: String;
+type FormData = {
+  name: string;
+  email: string;
+  message: string;
 };
+
+export type { FormData };
