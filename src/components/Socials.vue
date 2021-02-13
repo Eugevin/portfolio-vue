@@ -1,9 +1,13 @@
 <template>
   <ul class="socials">
-    <li class="socials-email"><a target="_blank" href="mailto:eugevin@outlook.com">Email</a></li>
-    <li class="socials-telegram"><a target="_blank" href="https://t.me/eugevin">Telegram</a></li>
-<!--    <li class="socials-whatsapp"><a target="_blank" href="#">WhatsApp</a></li>-->
-<!--    <li class="socials-viber"><a target="_blank" href="#">Viber</a></li>-->
+    <li class="socials-email">
+      <a target="_blank" href="mailto:eugevin@outlook.com">Email</a>
+    </li>
+    <li class="socials-telegram">
+      <a target="_blank" href="https://t.me/eugevin">Telegram</a>
+    </li>
+    <!--    <li class="socials-whatsapp"><a target="_blank" href="#">WhatsApp</a></li>-->
+    <!--    <li class="socials-viber"><a target="_blank" href="#">Viber</a></li>-->
   </ul>
 </template>
 
@@ -27,6 +31,11 @@ export default class Socials extends Vue {}
     color: #a6a6a6;
     padding: 37px 37px 37px 0;
     transition: $default-transition;
+
+    @media screen and (max-width: 1400px) {
+      font-size: 14px;
+      line-height: 26px;
+    }
 
     &:hover {
       color: #ffffff;

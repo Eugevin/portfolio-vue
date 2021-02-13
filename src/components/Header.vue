@@ -50,11 +50,34 @@ export default class Header extends Vue {
   width: 100px;
   background: rgba(0, 0, 0, 0.5);
 
+  @media screen and (max-width: 1400px) {
+    width: 76px;
+  }
+
+  @media screen and (max-width: 425px) {
+    border-left: none;
+    border-bottom: 1px solid #141414;
+    flex-direction: row-reverse;
+    right: unset;
+    left: 0;
+    height: 48px;
+    width: 100%;
+  }
+
   .header-burger {
+    position: relative;
     z-index: 98;
     padding: 37px;
     display: flex;
     flex-direction: column;
+
+    @media screen and (max-width: 1400px) {
+      padding: 30px;
+    }
+
+    @media screen and (max-width: 425px) {
+      padding: 16px;
+    }
 
     span {
       position: relative;
@@ -113,6 +136,7 @@ export default class Header extends Vue {
   }
 
   .header-white-mode {
+    visibility: hidden;
     cursor: pointer;
     padding: 37px;
     display: flex;
@@ -131,19 +155,6 @@ export default class Header extends Vue {
         transform: rotate(45deg);
         border-radius: 0;
       }
-    }
-  }
-
-  @media (max-width: 768px) {
-    top: unset;
-    bottom: 0;
-    height: 56px;
-    width: 100%;
-    flex-direction: row;
-
-    .header-burger,
-    .header-projects {
-      padding: 18.5px;
     }
   }
 }

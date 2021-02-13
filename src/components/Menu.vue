@@ -1,6 +1,6 @@
 <template>
   <div class="header-menu">
-    <div class="wrapper">
+    <div class="wrapper _zero-margin">
       <div class="wrapper-before">
         <nav v-on:click="menuHandler" class="header-menu__navigation">
           <ul>
@@ -86,18 +86,28 @@ export default class Menu extends Vue {
 
 <style lang="scss" scoped>
 .header-menu {
+  padding-top: 32px;
   display: flex;
   align-items: center;
   z-index: 97;
   position: fixed;
   top: 0;
   left: 0;
+  height: 100%;
   min-height: 100vh;
   width: 100%;
   background: #000000;
 
+  @media screen and (max-width: 425px) {
+    padding-top: 48px;
+  }
+
   .header-menu__navigation {
     text-align: center;
+
+    @media screen and (max-width: 1400px) {
+      margin-bottom: 40px;
+    }
 
     ul {
       li {
@@ -105,6 +115,7 @@ export default class Menu extends Vue {
           padding: 15px;
           position: relative;
           display: block;
+
           font-family: "Poppins", sans-serif;
           font-style: normal;
           font-weight: 600;
@@ -112,6 +123,12 @@ export default class Menu extends Vue {
           line-height: 60px;
           overflow: hidden;
           transition: $default-transition;
+
+          @media screen and (max-width: 1400px) {
+            padding: 8px;
+            font-size: 30px;
+            line-height: 46px;
+          }
 
           &::before {
             z-index: -1;
@@ -138,10 +155,21 @@ export default class Menu extends Vue {
   }
 
   .wrapper {
+    height: 100%;
+    overflow-y: auto;
+
+    @media screen and (max-width: 992px) {
+      flex-direction: column;
+    }
+
     .wrapper-before {
       display: flex;
       justify-content: center;
       text-align: center;
+
+      @media screen and (max-width: 992px) {
+        align-items: center !important;
+      }
     }
 
     .wrapper-after {

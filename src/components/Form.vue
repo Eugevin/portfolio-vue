@@ -1,21 +1,32 @@
 <template>
-  <form :class="{ _blocked: formBlocked }" method="POST" class="contacts-form">
-    <input v-model="userData.name" placeholder="Name" id="name" type="text" />
+  <form :class="{ _blocked: validForm }" method="POST" class="contacts-form">
     <input
-      v-model="userData.email"
+      required
+      :class="{ _disabled: !userData.name.status }"
+      v-model="userData.name.value"
+      placeholder="Name"
+      id="name"
+      type="text"
+    />
+    <input
+      required
+      :class="{ _disabled: !userData.email.status }"
+      v-model="userData.email.value"
       placeholder="Email"
       id="email"
       type="email"
     />
     <input
-      v-model="userData.message"
+      required
+      :class="{ _disabled: !userData.message.status }"
+      v-model="userData.message.value"
       placeholder="Message"
       id="message"
       type="text"
     />
     <button @click.prevent="formValidation" type="submit">Submit</button>
     <div class="_blocked-content">
-      <h2>Данные были успешно отправлены ❤</h2>
+      <h2>Данные были успешно отправлены 👌</h2>
     </div>
   </form>
 </template>
@@ -26,32 +37,52 @@ import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class Form extends Vue {
-  private formBlocked: boolean = false;
+  private validForm: boolean = false;
   private userData: FormData = {
-    name: "",
-    email: "",
-    message: "",
+    name: {
+      value: "",
+      status: true,
+    },
+    email: {
+      value: "",
+      status: true,
+    },
+    message: {
+      value: "",
+      status: true,
+    },
   };
+
+  private validateEmail(string: string): string | false {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (re.test(String(string).toLowerCase())) {
+      this.userData.email.status = true;
+
+      return string;
+    }
+
+    this.userData.email.status = false;
+
+    return false;
+  }
 
   private formValidation(): void {
     const url: string = "http://localhost:4000/feedback";
 
-    const { name, message } = this.userData;
-    const email = validateEmail(this.userData.email);
+    const { name, message, email } = this.userData;
 
-    function validateEmail(string: string): string | false {
-      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-      if (re.test(String(string).toLowerCase())) {
-        return string;
-      }
-
-      return false;
+    if (message.value !== "" && message.value !== " ") {
+      message.status = true;
+    } else {
+      message.status = false;
     }
 
-    const data = [name, email, message];
+    this.validateEmail(this.userData.email.value);
 
-    if (email !== false && message !== "" && message !== " ") {
+    if (name.status && email.status && message.status) {
+      const data = [name.value, email.value, message.value];
+
       const sendData = fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -59,9 +90,26 @@ export default class Form extends Vue {
       });
 
       sendData.then((res) => res.json());
-      sendData.then((data) =>
-        data ? (this.formBlocked = true) : (this.formBlocked = false)
-      );
+      sendData.then((data) => {
+        if (data) {
+          this.validForm = true;
+
+          const audio = new Audio();
+          audio.src = require("@/assets/sounds/success.mp3");
+          audio.play();
+        } else {
+          this.userData.email.status = false;
+
+          const audio = new Audio();
+          audio.src = require("@/assets/sounds/error.mp3");
+          audio.play();
+        }
+      });
+      sendData.catch((err) => console.log(err));
+    } else {
+      const audio = new Audio();
+      audio.src = require("@/assets/sounds/error.mp3");
+      audio.play();
     }
   }
 }
@@ -72,7 +120,7 @@ export default class Form extends Vue {
   overflow: hidden;
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 55px 30px;
 
   input {
@@ -86,6 +134,15 @@ export default class Form extends Vue {
     &#message {
       grid-row: 2;
       grid-column: 1 / span 2;
+    }
+
+    &._disabled {
+      color: #dc143c;
+      border-bottom: 2px solid #dc143c;
+
+      &::placeholder {
+        color: #dc143c;
+      }
     }
   }
 
@@ -125,6 +182,10 @@ export default class Form extends Vue {
       top: 0;
       opacity: 1;
       visibility: visible;
+
+      h2 {
+        font-family: "Roboto", sans-serif;
+      }
     }
   }
 }

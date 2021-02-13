@@ -1,14 +1,22 @@
 <template>
-  <div class="null">
-    <img id="err" src="../assets/img/404.svg" alt="404 error" />
-  </div>
+  <Inner
+    sup="The page you are looking is a myth."
+    title="It seems you are lost"
+    :main="true"
+    :image="innerImage"
+  />
 </template>
 
-<script>
+<script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import Inner from "@/components/Inner.vue";
 
-@Component
-export default class Null extends Vue {}
+@Component({
+  components: { Inner },
+})
+export default class Null extends Vue {
+  private innerImage: string = require("@/assets/img/404.svg");
+}
 </script>
 
 <style lang="scss" scoped>

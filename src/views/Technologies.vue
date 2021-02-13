@@ -29,12 +29,13 @@ export default class Technologies extends Vue {
   public techs: object[] = [
     {
       id: 0,
-      sup: "HTML5, CSS3, VANILLA JS",
+      sup: "HTML5, CSS3, VANILLA JS (ES 2020), TYPESCRIPT",
       title: "A really cool stuff for your website",
       description: `
           Every site in the web use HTML and CSS for build basic layout and his decor equally.
           This two things are most important things of every website.
           To create and control user interaction uses JavaScript - it's powerful programming language of the web.
+          In my current projects i use ES 2020 JavaScript standart with TypeScript on board.
           `,
       image: require("@/assets/img/whales.jpg"),
     },
@@ -44,6 +45,8 @@ export default class Technologies extends Vue {
       title: "What frontend frameworks i use",
       description: `
           In front-end development, I often use React or Vue, and lately I prefer the latter.
+          For state management i prefer to use Vuex and if course Redux in React.js projects.
+          I use components for fast design prototyping in non-designed projects.
           `,
       image: require("@/assets/img/vue-js.jpg"),
     },
@@ -61,6 +64,16 @@ export default class Technologies extends Vue {
           Favorite backend framework - Express.js
           `,
       image: require("@/assets/img/node-js.png"),
+    },
+    {
+      id: 3,
+      sup: "JOB TOOLS",
+      title:
+        "I use the most advanced tools during all my development",
+      description: `
+          I use WebStorm as my primary IDE on my main machine. I work with Figma, Photoshop, Sketch.
+          `,
+      image: require("@/assets/img/webstorm.png"),
     },
   ];
 }

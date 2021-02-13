@@ -9,9 +9,9 @@
       :menuState="activeMenu"
       :menuHandler="changeMenuState"
     />
-    <main>
-      <router-view></router-view>
-    </main>
+    <!-- <main>
+       <router-view></router-view>
+     </main> -->
   </div>
 </template>
 
@@ -34,6 +34,10 @@ export default class App extends Vue {
 
   public changeMenuState(): void {
     this.activeMenu = !this.activeMenu;
+
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 500);
   }
 
   public changeWhiteMode() {
@@ -239,11 +243,22 @@ body {
   }
 
   h5 {
+    margin-top: 50px;
+    margin-bottom: 16px;
     font-family: "Poppins", sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
     line-height: 30px;
+
+    @media screen and (max-width: 1400px) {
+      font-size: 14px;
+      line-height: 26px;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 
   h6 {
@@ -255,6 +270,7 @@ body {
   }
 
   p {
+    margin-top: 0;
     margin-bottom: 16px;
     color: #a6a6a6;
     font-family: "Roboto", sans-serif;
@@ -262,6 +278,13 @@ body {
     font-weight: normal;
     font-size: 16px;
     line-height: 30px;
+  }
+
+  @media (max-width: 1400px) {
+    h2 {
+      font-size: 24px;
+      line-height: 36px;
+    }
   }
 }
 
@@ -301,13 +324,16 @@ main {
     height: 100%;
     width: 57%;
     border-left: 1px solid #141414;
+
+    @media (max-width: 1400px) {
+      left: calc(43% + 76px);
+    }
   }
 
   .wrapper {
     margin-bottom: 80px;
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
 
     .wrapper-before {
       padding-right: 100px;
@@ -316,6 +342,14 @@ main {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+
+      @media screen and (max-width: 1400px) {
+        padding: 0 76px;
+      }
+
+      @media screen and (max-width: 425px) {
+        padding: 0 16px;
+      }
     }
 
     .wrapper-after {
@@ -323,28 +357,27 @@ main {
       position: relative;
       flex: 0 0 57%;
 
-      //&::before {
-      //  content: "";
-      //  position: absolute;
-      //  top: 0;
-      //  left: 100px;
-      //  height: 100%;
-      //  width: 100%;
-      //  border-left: 1px solid #141414;
-      //}
+      @media screen and (max-width: 1400px) {
+        padding: 0 76px;
+      }
+
+      @media screen and (max-width: 425px) {
+        padding: 0 16px;
+      }
+
+      p {
+        a {
+          color: #ffffff;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
     }
 
     > * {
       padding: 0 100px;
-    }
-
-    @media (max-width: 1024px) {
-      > * {
-        align-items: flex-start !important;
-        padding: 0 25px !important;
-        text-align: left !important;
-        flex: 0 0 100% !important;
-      }
     }
   }
 }
