@@ -9,9 +9,9 @@
       :menuState="activeMenu"
       :menuHandler="changeMenuState"
     />
-    <!-- <main>
-       <router-view></router-view>
-     </main> -->
+    <main>
+      <router-view></router-view>
+    </main>
   </div>
 </template>
 
@@ -203,6 +203,14 @@ body {
       width: 100%;
       object-fit: cover;
     }
+
+    @media screen and (max-width: 1400px) {
+      padding: 0 76px !important;
+    }
+
+    @media screen and (max-width: 768px) {
+      padding: 0 16px !important;
+    }
   }
 
   a {
@@ -224,6 +232,11 @@ body {
     font-weight: 600;
     font-size: 36px;
     line-height: 60px;
+
+    @media screen and (max-width: 1400px) {
+      font-size: 24px;
+      line-height: 36px;
+    }
   }
 
   h3 {
@@ -232,6 +245,16 @@ body {
     font-weight: 600;
     font-size: 30px;
     line-height: 46px;
+
+    @media screen and (max-width: 1400px) {
+      font-size: 18px;
+      line-height: 30px;
+    }
+
+    @media screen and (max-width: 768px) {
+      font-size: 14px;
+      line-height: 26px;
+    }
   }
 
   h4 {
@@ -314,6 +337,10 @@ main {
     height: 100%;
     width: 43%;
     background: rgba(20, 20, 20, 0.9);
+
+    @media screen and (max-width: 768px) {
+      content: none;
+    }
   }
 
   &::after {
@@ -328,12 +355,20 @@ main {
     @media (max-width: 1400px) {
       left: calc(43% + 76px);
     }
+
+    @media screen and (max-width: 768px) {
+      content: none;
+    }
   }
 
   .wrapper {
     margin-bottom: 80px;
     width: 100%;
     display: flex;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
 
     .wrapper-before {
       padding-right: 100px;
@@ -347,8 +382,16 @@ main {
         padding: 0 76px;
       }
 
-      @media screen and (max-width: 425px) {
+      @media screen and (max-width: 768px) {
         padding: 0 16px;
+      }
+
+      h2 {
+        margin: 0;
+
+        @media screen and (max-width: 768px) {
+          margin-bottom: 40px;
+        }
       }
     }
 
@@ -361,7 +404,7 @@ main {
         padding: 0 76px;
       }
 
-      @media screen and (max-width: 425px) {
+      @media screen and (max-width: 768px) {
         padding: 0 16px;
       }
 
@@ -371,6 +414,23 @@ main {
 
           &:hover {
             text-decoration: underline;
+          }
+        }
+
+        @media screen and (max-width: 768px) {
+          font-size: 12px;
+          line-height: 22px;
+        }
+      }
+
+      ul {
+        span {
+          display: inline-block;
+          margin-bottom: 10px;
+
+          @media screen and (max-width: 768px) {
+            font-size: 14px;
+            line-height: 26px;
           }
         }
       }

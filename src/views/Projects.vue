@@ -90,9 +90,14 @@ export default class Projects extends Vue {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr);
     gap: 100px;
-  }
 
-  .projects-description {
+    @media screen and (max-width: 768px) {
+      gap: 50px;
+    }
+
+    @media screen and (max-width: 425px) {
+      gap: 25px;
+    }
   }
 }
 </style>

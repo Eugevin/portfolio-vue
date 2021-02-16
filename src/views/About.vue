@@ -191,6 +191,10 @@ export default class About extends Vue {
     border: 1px solid #141414;
     overflow: hidden;
 
+    @media screen and (max-width: 1400px) {
+      height: 100px;
+    }
+
     img {
       height: 100%;
       width: 100%;
@@ -200,7 +204,7 @@ export default class About extends Vue {
 
     &:hover {
       img {
-        transform: scale(1.2) rotate(5deg);
+        transform: scale(1.2);
       }
     }
   }

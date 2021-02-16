@@ -51,16 +51,40 @@ export default class Project extends Vue {
 
   &._small {
     height: 360px;
+
+    @media screen and (max-width: 768px) {
+      height: 200px;
+    }
+
+    @media screen and (max-width: 425px) {
+      height: 150px;
+    }
   }
 
   &._medium {
     grid-column: 1 / span 2;
     height: 415px;
+
+    @media screen and (max-width: 768px) {
+      height: 300px;
+    }
+
+    @media screen and (max-width: 425px) {
+      height: 250px;
+    }
   }
 
   &._big {
     grid-column: 1 / span 2;
     height: 675px;
+
+    @media screen and (max-width: 768px) {
+      height: 400px;
+    }
+
+    @media screen and (max-width: 425px) {
+      height: 350px;
+    }
   }
 
   &::before {

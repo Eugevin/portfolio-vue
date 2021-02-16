@@ -55,5 +55,25 @@ export default class Tech extends Vue {
   .tech-image {
     width: 100%;
   }
+
+  .tech-description {
+    @media screen and (max-width: 768px) {
+      .tech-description__sup {
+        font-size: 12px;
+        line-height: 22px;
+      }
+
+      .tech-description__title {
+        font-size: 24px;
+        line-height: 36px;
+      }
+
+      .tech-description__text {
+        text-align: left;
+        font-size: 12px;
+        line-height: 22px;
+      }
+    }
+  }
 }
 </style>

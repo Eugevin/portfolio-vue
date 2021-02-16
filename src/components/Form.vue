@@ -120,8 +120,18 @@ export default class Form extends Vue {
   overflow: hidden;
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-areas:
+    "name email null"
+    "message message button";
   gap: 55px 30px;
+
+  @media screen and (max-width: 1200px) {
+    grid-template-areas:
+      "name null"
+      "email null"
+      "message button";
+    gap: 24px;
+  }
 
   input {
     visibility: visible;
@@ -129,11 +139,15 @@ export default class Form extends Vue {
     transition: $default-transition;
 
     &#name {
+      grid-area: name;
+    }
+
+    &#email {
+      grid-area: email;
     }
 
     &#message {
-      grid-row: 2;
-      grid-column: 1 / span 2;
+      grid-area: message;
     }
 
     &._disabled {
@@ -147,7 +161,7 @@ export default class Form extends Vue {
   }
 
   button[type="submit"] {
-    grid-row: 2;
+    grid-area: button;
     width: 85px;
     visibility: visible;
     opacity: 1;

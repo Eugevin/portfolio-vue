@@ -10,7 +10,12 @@
     <Slider v-if="slider" />
     <div :class="{ '_zero-margin': main }" class="wrapper">
       <div class="wrapper-before">
-        <object class="inner-image" :data="icon" type="image/svg+xml"></object>
+        <object
+          v-if="icon"
+          class="inner-image"
+          :data="icon"
+          type="image/svg+xml"
+        ></object>
       </div>
       <div class="wrapper-after">
         <p class="inner-sup">{{ sup }}</p>
@@ -51,7 +56,7 @@ export default class Inner extends Vue {
   margin-bottom: 100px;
   position: relative;
   width: 100%;
-  min-height: 600px;
+  min-height: 400px;
   height: 100vh;
 
   &::before {
@@ -76,20 +81,47 @@ export default class Inner extends Vue {
   }
 
   .wrapper {
+    margin-bottom: 66px !important;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
 
     .wrapper-before {
       display: flex;
       justify-content: center;
       align-items: center;
+
+      @media screen and (max-width: 768px) {
+        align-items: flex-start !important;
+        margin-bottom: 60px;
+      }
     }
 
     .wrapper-after {
       .inner-sup {
+        font-size: 16px;
+        line-height: 30px;
         color: #ffffff;
+
+        @media screen and (max-width: 768px) {
+          font-size: 12px;
+          line-height: 22px;
+        }
       }
 
       .inner-title {
-        margin-top: 0;
+        margin: 0;
+        font-size: 30px;
+        line-height: 46px;
+
+        @media screen and (max-width: 768px) {
+          font-size: 24px;
+          line-height: 36px;
+        }
       }
     }
   }

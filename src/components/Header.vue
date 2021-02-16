@@ -54,7 +54,7 @@ export default class Header extends Vue {
     width: 76px;
   }
 
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 768px) {
     border-left: none;
     border-bottom: 1px solid #141414;
     flex-direction: row-reverse;
@@ -75,7 +75,7 @@ export default class Header extends Vue {
       padding: 30px;
     }
 
-    @media screen and (max-width: 425px) {
+    @media screen and (max-width: 768px) {
       padding: 16px;
     }
 
