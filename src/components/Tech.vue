@@ -3,37 +3,19 @@
     <div class="wrapper">
       <div class="wrapper-before">
         <div class="tech-description">
-          <p
-            data-aos="fade-up"
-            data-aos-delay="100"
-            class="tech-description__sup"
-          >
+          <p class="tech-description__sup">
             {{ tech.sup }}
           </p>
-          <h3
-            data-aos="fade-up"
-            data-aos-delay="200"
-            class="tech-description__title"
-          >
+          <h3 class="tech-description__title">
             {{ tech.title }}
           </h3>
-          <p
-            data-aos="fade-up"
-            data-aos-delay="300"
-            class="tech-description__text"
-          >
+          <p class="tech-description__text">
             {{ tech.description }}
           </p>
         </div>
       </div>
       <div class="wrapper-after">
-        <img
-          data-aos="fade-up"
-          data-aos-delay="400"
-          class="tech-image"
-          v-bind:src="tech.image"
-          alt="tech image"
-        />
+        <img class="tech-image" v-bind:src="tech.image" alt="tech image" />
       </div>
     </div>
   </div>

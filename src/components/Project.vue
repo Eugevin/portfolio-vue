@@ -1,112 +1,43 @@
 <template>
-  <div
-    :class="`_${className}`"
-    :style="{ backgroundImage: `url('${img}')` }"
-    class="project"
-    data-aos="fade-up"
-  >
-    <h4 class="project-kind">{{ kind }}</h4>
-    <span class="project-description">{{ description }}</span>
+  <div class="project">
+    <div class="project__image">
+      <img :src="image" :alt="title" />
+    </div>
+    <h2>{{ title }}</h2>
+    <p>{{ description }}</p>
+    <a class="project__link" target="_blank" :href="link">Link to the site</a>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component
 export default class Project extends Vue {
-  @Prop(String) readonly className: any;
-  @Prop(String) readonly img: any;
-  @Prop(String) readonly kind: any;
-  @Prop(String) readonly description: any;
+  @Prop() private image: any;
+  @Prop() private title: any;
+  @Prop() private description: any;
+  @Prop() private link: any;
 }
 </script>
 
 <style lang="scss" scoped>
 .project {
-  position: relative;
-  background-size: cover;
-  cursor: pointer;
-  padding: 20px;
-  display: flex;
-  overflow: hidden;
-
-  .project-kind {
-    margin: 0;
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-  }
-
-  .project-description {
-    position: relative;
-    visibility: hidden;
-    text-align: center;
-    margin: auto;
-    padding: 0 20px;
-    z-index: 2;
-    opacity: 0;
-    transition: $default-transition;
-  }
-
-  &._small {
-    height: 360px;
-
-    @media screen and (max-width: 768px) {
-      height: 200px;
-    }
-
-    @media screen and (max-width: 425px) {
-      height: 150px;
-    }
-  }
-
-  &._medium {
-    grid-column: 1 / span 2;
+  .project__image {
     height: 415px;
 
-    @media screen and (max-width: 768px) {
-      height: 300px;
-    }
-
-    @media screen and (max-width: 425px) {
-      height: 250px;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
     }
   }
-
-  &._big {
-    grid-column: 1 / span 2;
-    height: 675px;
-
-    @media screen and (max-width: 768px) {
-      height: 400px;
-    }
-
-    @media screen and (max-width: 425px) {
-      height: 350px;
-    }
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    background: rgba(0, 0, 0, 0.5);
-    transition: $default-transition;
-  }
-
-  &:hover {
-    .project-description {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    &::before {
-      opacity: 1;
+  
+  .project__link {
+    text-decoration: underline;
+    
+    &:hover {
+      text-decoration: none;
     }
   }
 }

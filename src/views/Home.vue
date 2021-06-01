@@ -2,8 +2,8 @@
   <div class="home">
     <Inner
       :main="true"
-      :slider="true"
-      title="I'm a Frontend Developer based in Nijny Novgorod, Russia"
+      :background="require('@/assets/img/home-bg.gif')"
+      title="I'm a Frontend Developer from mother Russia 🐼"
       sup="Eugene Vinokurov"
     />
   </div>

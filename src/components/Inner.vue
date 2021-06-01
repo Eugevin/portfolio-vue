@@ -7,7 +7,6 @@
     <div v-if="image" class="inner-main-image">
       <img :src="image" alt="inner main image" />
     </div>
-    <Slider v-if="slider" />
     <div :class="{ '_zero-margin': main }" class="wrapper">
       <div class="wrapper-before">
         <object
@@ -28,16 +27,9 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 
-import Slider from "@/components/Slider.vue";
-
-@Component({
-  components: {
-    Slider,
-  },
-})
+@Component
 export default class Inner extends Vue {
   @Prop({ type: Boolean, default: false }) readonly main!: boolean;
-  @Prop({ type: Boolean, default: false }) readonly slider!: boolean;
   @Prop(String) readonly image!: string;
   @Prop(String) readonly background!: string;
   @Prop(String) readonly icon!: string;

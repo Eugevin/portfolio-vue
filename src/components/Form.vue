@@ -26,7 +26,7 @@
     />
     <button @click.prevent="formValidation" type="submit">Submit</button>
     <div class="_blocked-content">
-      <h2>Данные были успешно отправлены 👌</h2>
+      <h2>The data was sent successfully 👌</h2>
     </div>
   </form>
 </template>
@@ -54,7 +54,8 @@ export default class Form extends Vue {
   };
 
   private validateEmail(string: string): string | false {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (re.test(String(string).toLowerCase())) {
       this.userData.email.status = true;
@@ -68,15 +69,11 @@ export default class Form extends Vue {
   }
 
   private formValidation(): void {
-    const url: string = "http://localhost:4000/feedback";
+    const url: string = "http://192.168.1.102:3000/feedback";
 
     const { name, message, email } = this.userData;
 
-    if (message.value !== "" && message.value !== " ") {
-      message.status = true;
-    } else {
-      message.status = false;
-    }
+    message.status = message.value !== "" && message.value !== " ";
 
     this.validateEmail(this.userData.email.value);
 
@@ -89,22 +86,25 @@ export default class Form extends Vue {
         body: JSON.stringify(data),
       });
 
-      sendData.then((res) => res.json());
-      sendData.then((data) => {
-        if (data) {
-          this.validForm = true;
+      sendData
+        .then((res) => res.json())
+        .then((data) => {
+          const { result } = data;
 
-          const audio = new Audio();
-          audio.src = require("@/assets/sounds/success.mp3");
-          audio.play();
-        } else {
-          this.userData.email.status = false;
+          if (result) {
+            this.validForm = true;
 
-          const audio = new Audio();
-          audio.src = require("@/assets/sounds/error.mp3");
-          audio.play();
-        }
-      });
+            const audio = new Audio();
+            audio.src = require("@/assets/sounds/success.mp3");
+            audio.play();
+          } else {
+            this.userData.email.status = false;
+
+            const audio = new Audio();
+            audio.src = require("@/assets/sounds/error.mp3");
+            audio.play();
+          }
+        });
       sendData.catch((err) => console.log(err));
     } else {
       const audio = new Audio();
@@ -169,6 +169,8 @@ export default class Form extends Vue {
   }
 
   ._blocked-content {
+    text-align: center;
+    padding: 0 16px;
     color: #141414;
     background: #ffffff;
     position: absolute;

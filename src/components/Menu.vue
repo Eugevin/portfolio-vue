@@ -25,7 +25,7 @@
       <div class="wrapper-after">
         <h5>Follow me</h5>
         <Socials />
-        <p>2020 @ MMLST. All rights reserved.</p>
+        <p>2020 @ eugevin.ru All rights reserved (but what rights? im in Russia 😿).</p>
       </div>
     </div>
   </div>

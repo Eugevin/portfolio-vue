@@ -195,7 +195,7 @@ body {
 
   .large-block {
     padding: 100px 0;
-    height: 415px;
+    min-height: 415px;
     width: 100%;
 
     img {

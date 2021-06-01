@@ -7,11 +7,11 @@
     />
     <div class="wrapper">
       <div class="wrapper-before">
-        <h2 data-aos="fade-up">Short programming story</h2>
+        <h2>Short programming story</h2>
       </div>
       <div class="wrapper-after">
         <ul class="color-list">
-          <li data-aos="fade-up" data-aos-delay="100">
+          <li>
             <span>2012 -- First steps 😎</span>
             <p>
               I am 13 years old. I play minecraft. I see a hype of servers on it
@@ -27,7 +27,7 @@
               13...
             </p>
           </li>
-          <li data-aos="fade-up">
+          <li>
             <span>2017 -- Frontend or no way! 🤡</span>
             <p>
               After a long break in programming, I go to university for
@@ -40,7 +40,7 @@
               for coding interfaces.
             </p>
           </li>
-          <li data-aos="fade-up">
+          <li>
             <span>2018 -- F**k off, society 😢</span>
             <p>
               I still don’t come close to JavaScript, but I already know HTML
@@ -54,7 +54,7 @@
               the same plane.
             </p>
           </li>
-          <li data-aos="fade-up">
+          <li>
             <span>2019 - NOWADAYS -- I'm in love with the... JS! 💻</span>
             <p>
               In 2019 I thoroughly studied
@@ -72,84 +72,65 @@
       </div>
     </div>
     <div class="wrapper">
-      <div data-aos="fade-up" class="large-block">
+      <div class="large-block">
         <div class="large-block__inner"></div>
       </div>
     </div>
     <div class="wrapper">
       <div class="wrapper-before">
-        <h2 data-aos="fade-up">My Services</h2>
+        <h2>My Services</h2>
       </div>
       <div class="wrapper-after">
-        <p data-aos="fade-up" data-aos-delay="100">
-          We combine design, technology and business strategy into a unified
-          discipline powerful enough to propel companies forward.
+        <p>
+          Programming in JavaScript, creating user interfaces, clean websites in
+          HTML5, CSS3 and Vanilla JS, creating SPA, creating and maintaining
+          high-load Frontend Applications, creating SPA cross-platform
+          applications for desktops and mobile devices
         </p>
       </div>
     </div>
     <div class="wrapper">
       <div class="wrapper-before">
-        <h2 data-aos="fade-up">Why Me</h2>
+        <h2>Why Me</h2>
       </div>
       <div class="wrapper-after">
-        <h5 data-aos="fade-up">Premium Quality</h5>
-        <p data-aos="fade-up">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        <h5>Huge experience</h5>
+        <p>
+          I have worked on a large number of commercial projects for both
+          private and public companies. I have been and am engaged in support of
+          old and development of new projects
         </p>
-        <h5 data-aos="fade-up">Premium Quality</h5>
-        <p data-aos="fade-up">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        <h5>High Quality</h5>
+        <p>
+          Most of my clients are happy to work with me, because I try to adapt
+          to each of them so that our communication is as productive as possible
         </p>
-        <h5 data-aos="fade-up">Premium Quality</h5>
-        <p data-aos="fade-up">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        <h5>Fast response</h5>
+        <p>
+          I quickly respond to messages from my clients and help with questions
+          on the future development of their projects
         </p>
       </div>
     </div>
     <div class="wrapper">
       <div class="wrapper-before">
-        <h2 data-aos="fade-up">My Clients</h2>
+        <h2>My Clients</h2>
       </div>
       <div class="wrapper-after">
-        <p data-aos="fade-up" data-aos-delay="100">
-          Proudly served some of the most famous brands:
-        </p>
+        <p>Some projects I've worked on:</p>
         <div class="clients-grid">
-          <a data-aos="fade-up" href="#" class="clients-grid__item">
-            <img src="../assets/img/about-inner-bg.jpg" alt="client" />
-          </a>
           <a
-            data-aos="fade-up"
-            data-aos-delay="100"
-            href="#"
+            v-for="client in clients"
+            :key="client.id"
+            :title="client.title"
+            :href="client.link"
+            target="_blank"
             class="clients-grid__item"
           >
-            <img src="../assets/img/about-inner-bg.jpg" alt="client" />
-          </a>
-          <a data-aos="fade-up" href="#" class="clients-grid__item">
-            <img src="../assets/img/about-inner-bg.jpg" alt="client" />
-          </a>
-          <a
-            data-aos="fade-up"
-            data-aos-delay="100"
-            href="#"
-            class="clients-grid__item"
-          >
-            <img src="../assets/img/about-inner-bg.jpg" alt="client" />
-          </a>
-          <a data-aos="fade-up" href="#" class="clients-grid__item">
-            <img src="../assets/img/about-inner-bg.jpg" alt="client" />
-          </a>
-          <a
-            data-aos="fade-up"
-            data-aos-delay="100"
-            href="#"
-            class="clients-grid__item"
-          >
-            <img src="../assets/img/about-inner-bg.jpg" alt="client" />
+            <img :src="client.image" alt="client" />
           </a>
         </div>
-        <h3>Whatever your needs, we’re looking forward to hearing from you</h3>
+        <h3>All you need, all you want - just write!</h3>
         <router-link to="/contacts">
           <button>Contact Us</button>
         </router-link>
@@ -161,6 +142,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Inner from "@/components/Inner.vue";
+import store from "@/store";
 
 @Component({
   components: {
@@ -168,7 +150,8 @@ import Inner from "@/components/Inner.vue";
   },
 })
 export default class About extends Vue {
-  private innerBg: string = require("@/assets/img/about-inner-bg.jpg");
+  private innerBg = require("@/assets/img/about-inner-bg.jpg");
+  private clients = store.projects;
 }
 </script>
 
@@ -177,8 +160,12 @@ export default class About extends Vue {
   .large-block__inner {
     height: 100%;
     width: 100%;
-    background: url("../assets/img/about-inner-bg.jpg") no-repeat fixed center /
-      cover;
+    background: url("../assets/img/code.png") no-repeat fixed center / cover;
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 200px;
+    padding: 0;
   }
 }
 

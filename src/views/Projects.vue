@@ -6,79 +6,35 @@
       title="My projects"
       icon=""
     />
-    <div class="wrapper">
-      <div class="wrapper-before projects-row">
+    <div v-for="project in projects" :key="project.id" class="wrapper">
+      <div class="large-block">
         <Project
-          v-for="project in projects"
-          :key="project.id"
-          :kind="project.kind"
+          :image="project.image"
+          :title="project.title"
           :description="project.description"
-          :img="project.img"
-          :class-name="project.className"
+          :link="project.link"
         />
       </div>
-      <div class="wrapper-after projects-description"></div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import store from "@/store";
 
 import Inner from "@/components/Inner.vue";
 import Project from "@/components/Project.vue";
 
-type Projecto = {
-  id: number;
-  className: string;
-  description: string;
-  kind: string;
-  img: string;
-};
-
 @Component({
   components: {
-    Inner,
     Project,
+    Inner,
   },
 })
 export default class Projects extends Vue {
   private innerBg: string = require("@/assets/img/projects-bg.jpg");
-
-  protected projects: Projecto[] = [
-    {
-      id: 0,
-      className: "small",
-      description:
-        "Lorem ipsum dolores Lorem ipsum dolores Lorem ipsum dolores Lorem ipsum dolores Lorem ipsum dolores",
-      kind: "Photo",
-      img: require("@/assets/img/about-inner-bg.jpg"),
-    },
-    {
-      id: 1,
-      className: "small",
-      description:
-        "Lorem ipsum dolores Lorem ipsum dolores Lorem ipsum dolores Lorem ipsum dolores Lorem ipsum dolores",
-      kind: "Photo",
-      img: require("@/assets/img/about-inner-bg.jpg"),
-    },
-    {
-      id: 2,
-      className: "medium",
-      description:
-        "Lorem ipsum dolores Lorem ipsum dolores Lorem ipsum dolores Lorem ipsum dolores Lorem ipsum dolores",
-      kind: "Photo",
-      img: require("@/assets/img/about-inner-bg.jpg"),
-    },
-    {
-      id: 3,
-      className: "big",
-      description:
-        "Lorem ipsum dolores Lorem ipsum dolores Lorem ipsum dolores Lorem ipsum dolores Lorem ipsum dolores",
-      kind: "Photo",
-      img: require("@/assets/img/about-inner-bg.jpg"),
-    },
-  ];
+  private projects = store.projects;
 }
 </script>
 

@@ -11,12 +11,6 @@
         <h2>Let’s work together and make something that matters.</h2>
       </div>
       <div class="wrapper-after">
-        <h5>Address</h5>
-        <p>Earth planet, Russia country, Nijny Novgorod city</p>
-        <h5>Email</h5>
-        <p>
-          <a href="mailto:eugevin@outlook.com">eugevin@outlook.com</a>
-        </p>
         <h5>Get in Touch</h5>
         <Form />
         <h5>Also contact me</h5>

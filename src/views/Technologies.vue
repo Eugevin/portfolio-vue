@@ -41,12 +41,13 @@ export default class Technologies extends Vue {
     },
     {
       id: 1,
-      sup: "REACT, VUE.JS",
+      sup: "VUE.JS",
       title: "What frontend frameworks i use",
       description: `
-          In front-end development, I often use React or Vue, and lately I prefer the latter.
-          For state management i prefer to use Vuex and if course Redux in React.js projects.
-          I use components for fast design prototyping in non-designed projects.
+          In front-end development, I use VueJS.
+          For state management i prefer default Vuex.
+          VueJS transform your site to fully web-application and give your users more capabilities (like Single Page Application without page reload, download your site as application on main screen of user's device and others)
+          Also i have experience with Vuetify and other VueJS libraries.
           `,
       image: require("@/assets/img/vue-js.jpg"),
     },
@@ -68,10 +69,10 @@ export default class Technologies extends Vue {
     {
       id: 3,
       sup: "JOB TOOLS",
-      title:
-        "I use the most advanced tools during all my development",
+      title: "I use the most advanced tools during all my development",
       description: `
           I use WebStorm as my primary IDE on my main machine. I work with Figma, Photoshop, Sketch.
+          All my project created with webpack, this tool help me create truly fast, secure and user friendly websites!
           `,
       image: require("@/assets/img/webstorm.png"),
     },
